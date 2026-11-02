@@ -12,6 +12,9 @@ img{max-width:100%}
   color-scheme:light;
 }
 *{box-sizing:border-box}
+@media(hover:hover) and (pointer:fine){
+  html,html *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='2' y='2' width='20' height='20' fill='%23c8f55a' stroke='%23111111' stroke-width='3'/%3E%3C/svg%3E") 12 12,auto!important}
+}
 html{scroll-behavior:smooth;scrollbar-width:none}
 html::-webkit-scrollbar{display:none}
 body{background:var(--pink);color:var(--ink);font-family:var(--mono);font-size:14px;line-height:1.65;overflow-x:hidden;position:relative}
