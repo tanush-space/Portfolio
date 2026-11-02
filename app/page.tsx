@@ -42,7 +42,11 @@ export default function Home() {
 
       <nav aria-label="Primary">
         <div className="wrap">
-          <a className="brand" href="#top"><i></i>Tanush</a>
+          <a className="brand" href="#top">
+            <i></i>
+            <span>Tanush</span>
+            <img className="brand-gif" src="/navbar.gif" alt="" aria-hidden="true" />
+          </a>
           <ul>
             <li className="opt"><a href="#projects">Projects</a></li>
             <li className="opt"><a href="#experience">Experience</a></li>
@@ -157,7 +161,10 @@ export default function Home() {
         </section>
       </main>
 
-      <footer>Crafted with ❤️ by MKS. All rights reserved.</footer>
+      <footer>
+        <span>Crafted with ❤️ by MKS. All rights reserved.</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
       
     </>
   );
