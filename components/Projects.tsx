@@ -3,61 +3,125 @@
 import { useState, type CSSProperties } from "react";
 import { PROJECTS, TAG_COLORS } from "@/lib/data";
 
-export default function Projects() {
-  const [open, setOpen] = useState<number | null>(0);
+function ProjectDetails({ index }: { index: number }) {
+  const project = PROJECTS[index];
 
   return (
-    <div className="accs" id="accs">
-      {PROJECTS.map((p, i) => {
-        const isOpen = open === i;
-        return (
-          <div
-            key={p.n}
-            className={"acc" + (isOpen ? " open" : "")}
-            style={{ "--c": p.c, "--n": p.nc } as CSSProperties}
-          >
+    <div className="inner">
+      <div className="frame">
+        <div className="bar"><i></i><i></i><i></i><span>{project.url}</span></div>
+        <div className="canvas">
+          <div><b>{project.n}</b><small>{project.tag}</small></div>
+        </div>
+        <div className="badge" style={{ background: index === 4 ? "#ff6a2b" : "#ff3d3d" }}>
+          {index === 4 ? "Building" : index < 2 ? "Case study" : "Shipped"}
+        </div>
+      </div>
+      <div>
+        <p className="meta">File 0{index + 1} / 0{PROJECTS.length} · {project.type}</p>
+        <h3 className="project-title">{project.n}</h3>
+        <dl className="facts">
+          <div><dt>Role</dt><dd>{project.role}</dd></div>
+          <div><dt>Type</dt><dd>{project.type}</dd></div>
+        </dl>
+        <p className="desc">{project.d}</p>
+        <ul className="tags">
+          {project.t.map((tag, tagIndex) => (
+            <li key={tag} style={{ "--t": TAG_COLORS[(tagIndex + index) % 5] } as CSSProperties}>{tag}</li>
+          ))}
+        </ul>
+        <a className="btn" href="#contact">Ask for case study →</a>
+      </div>
+    </div>
+  );
+}
+
+export default function Projects() {
+  const [active, setActive] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState<number | null>(0);
+
+  return (
+    <div className="project-browser" id="accs">
+      <div className="project-desktop">
+        <div className="project-tabs" role="tablist" aria-label="Projects">
+          {PROJECTS.map((project, index) => (
             <button
+              key={project.n}
+              id={`project-tab-${index}`}
+              className={`project-tab${active === index ? " active" : ""}`}
               type="button"
-              aria-expanded={isOpen}
-              aria-controls={`proj-${i}`}
-              onClick={() => setOpen(isOpen ? null : i)}
+              role="tab"
+              aria-selected={active === index}
+              aria-controls={`project-panel-${index}`}
+              tabIndex={active === index ? 0 : -1}
+              style={{ "--c": project.c, "--n": project.nc } as CSSProperties}
+              onClick={() => setActive(index)}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowRight") {
+                  event.preventDefault();
+                  const next = (active + 1) % PROJECTS.length;
+                  setActive(next);
+                  document.getElementById(`project-tab-${next}`)?.focus();
+                } else if (event.key === "ArrowLeft") {
+                  event.preventDefault();
+                  const next = (active - 1 + PROJECTS.length) % PROJECTS.length;
+                  setActive(next);
+                  document.getElementById(`project-tab-${next}`)?.focus();
+                } else if (event.key === "Home" || event.key === "End") {
+                  event.preventDefault();
+                  const next = event.key === "Home" ? 0 : PROJECTS.length - 1;
+                  setActive(next);
+                  document.getElementById(`project-tab-${next}`)?.focus();
+                }
+              }}
             >
-              <span className="num">0{i + 1}</span>
-              <span className="ttl">{p.n}</span>
-              <span className="plus" aria-hidden="true">+</span>
+              <span className="project-tab-num">0{index + 1}</span>
+              <span>{project.n}</span>
             </button>
-            <div className="body" id={`proj-${i}`}>
-              <div>
-                <div className="inner">
-                  <div className="frame" style={{ "--bg": p.bg } as CSSProperties}>
-                    <div className="bar"><i></i><i></i><i></i><span>{p.url}</span></div>
-                    <div className="canvas">
-                      <div><b>{p.n}</b><small>{p.tag}</small></div>
-                    </div>
-                    <div className="badge" style={{ background: i === 4 ? "#ff6a2b" : "#ff3d3d" }}>
-                      {i === 4 ? "Building" : i < 2 ? "Case study" : "Shipped"}
-                    </div>
-                  </div>
-                  <div>
-                    <p className="meta">File 0{i + 1} / 0{PROJECTS.length} · {p.type}</p>
-                    <dl className="facts">
-                      <div><dt>Role</dt><dd>{p.role}</dd></div>
-                      <div><dt>Type</dt><dd>{p.type}</dd></div>
-                    </dl>
-                    <p className="desc">{p.d}</p>
-                    <ul className="tags">
-                      {p.t.map((x, k) => (
-                        <li key={x} style={{ "--t": TAG_COLORS[(k + i) % 5] } as CSSProperties}>{x}</li>
-                      ))}
-                    </ul>
-                    <a className="btn" href="#contact">Ask for case study →</a>
-                  </div>
+          ))}
+        </div>
+        {PROJECTS.map((project, index) => (
+          <section
+            key={project.n}
+            id={`project-panel-${index}`}
+            className="project-panel"
+            role="tabpanel"
+            aria-labelledby={`project-tab-${index}`}
+            hidden={active !== index}
+            style={{ "--bg": project.bg } as CSSProperties}
+          >
+            <ProjectDetails index={index} />
+          </section>
+        ))}
+      </div>
+      <div className="project-mobile">
+        {PROJECTS.map((project, index) => {
+          const isOpen = mobileOpen === index;
+          return (
+            <article
+              key={project.n}
+              className={`mobile-project${isOpen ? " open" : ""}`}
+              style={{ "--c": project.c, "--n": project.nc, "--bg": project.bg } as CSSProperties}
+            >
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={`mobile-project-panel-${index}`}
+                onClick={() => setMobileOpen(isOpen ? null : index)}
+              >
+                <span className="project-tab-num">0{index + 1}</span>
+                <span className="mobile-project-title">{project.n}</span>
+                <span className="mobile-project-toggle" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+              </button>
+              {isOpen && (
+                <div id={`mobile-project-panel-${index}`} className="mobile-project-panel">
+                  <ProjectDetails index={index} />
                 </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+              )}
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
