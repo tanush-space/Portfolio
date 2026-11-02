@@ -8,9 +8,9 @@ export const EMAIL = "tanushgupta06work@gmail.com";
 export const PHONE = "+91 9149836284";
 
 export const SOCIALS = [
-  { name: "GitHub", href: "https://github.com/" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/" },
-  { name: "Behance", href: "https://www.behance.net/" },
+  { name: "GitHub", href: "https://github.com/tanush-space" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/taanushhh" },
+  { name: "Behance", href: "https://www.behance.net/taanushhh" },
 ];
 
 export type Project = {
