@@ -14,6 +14,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: { icon: "/tanush.jpeg", shortcut: "/tanush.jpeg", apple: "/tanush.jpeg" },
   title: { default: title, template: "%s | Tanush Gupta" },
   description,
   applicationName: "Tanush Gupta Portfolio",
