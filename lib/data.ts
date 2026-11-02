@@ -4,7 +4,7 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://tanush-gupt
 // Put your photo in /public and set the path here, e.g. "/tanush.jpg". Empty shows the placeholder.
 export const PHOTO_SRC = "/tanush.jpeg";
 
-export const EMAIL = "tanushgupta06work@gmail.com";
+export const EMAIL = "tanushgupta006work@gmail.com";
 export const PHONE = "+91 9149836284";
 
 export const SOCIALS = [
