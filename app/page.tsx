@@ -181,7 +181,7 @@ export default function Home() {
       </main>
 
       <footer>
-        <span>Crafted with ❤️ by MKS. All rights reserved.</span>
+        <span>Crafted with ❤️ by Tee. All rights reserved.</span>
         <a href="#top">Back to top ↑</a>
       </footer>
       
