@@ -58,6 +58,25 @@ export default function Home() {
 
       <main>
         <header className="hero" id="top">
+          <svg className="visual-filters" aria-hidden="true">
+            <filter id="liquid-flow">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.012 0.035"
+                numOctaves="2"
+                seed="4"
+                result="flow"
+              >
+                <animate
+                  attributeName="baseFrequency"
+                  dur="9s"
+                  values="0.012 0.035;0.03 0.012;0.012 0.035"
+                  repeatCount="indefinite"
+                />
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="flow" scale="9" />
+            </filter>
+          </svg>
           <div className="mark" aria-hidden="true">TANUSH</div>
           <div className="wrap">
             <div className="hero-grid">
