@@ -7,7 +7,7 @@ const archivo = Archivo_Black({ weight: "400", subsets: ["latin"], display: "swa
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], display: "swap", variable: "--font-space-mono" });
 const instrument = Instrument_Serif({ weight: "400", style: "italic", subsets: ["latin"], display: "swap", variable: "--font-instrument" });
 
-const title = "Tanush Gupta | UI/UX Designer in Jammu, India";
+const title = "Tanush Gupta";
 const description =
   "Tanush Gupta is a UI/UX designer and BCA student in Jammu, India. UI/UX Lead at GDGoC MIET, with work across healthcare, startups and education in Figma.";
 
