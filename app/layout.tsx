@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Space_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/data";
+import Snowfall from "./Snowfall";
 
 const archivo = Archivo_Black({ weight: "400", subsets: ["latin"], display: "swap", variable: "--font-archivo" });
 const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], display: "swap", variable: "--font-space-mono" });
@@ -45,7 +46,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${spaceMono.variable} ${instrument.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Snowfall />
+        <div className="page-content">{children}</div>
+      </body>
     </html>
   );
 }
