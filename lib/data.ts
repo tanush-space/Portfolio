@@ -15,15 +15,15 @@ export const SOCIALS = [
 
 export type Project = {
   n: string; type: string; role: string; st: string; d: string; t: string[];
-  c: string; nc: string; bg: string; tag: string; url: string;
+  c: string; nc: string; bg: string; tag: string; url: string; image?: string;
 };
 
 export const PROJECTS: Project[] = [
-  { n: "Verdure", type: "Mobile App", role: "UI/UX Designer", st: "Case study", d: "A plant-care app with reminders, dashboards and clean care flows that keep a watering routine easy to follow.", t: ["Figma", "Mobile UI", "Prototyping", "Dashboards"], c: "#cbb8ff", nc: "#ff6a2b", bg: "#c8f55a", tag: "Plant Care App", url: "behance.net" },
-  { n: "THREADRIP", type: "Shopping App", role: "UI/UX Designer", st: "Case study", d: "A Gen Z fashion shopping app with a bold, browse-first interface.", t: ["Figma", "E-commerce", "Mobile UI", "Visual design"], c: "#fff4dc", nc: "#c8f55a", bg: "#ff6a2b", tag: "GenZ Fashion", url: "behance.net" },
-  { n: "Medighar", type: "Healthcare Platform", role: "Product Designer", st: "Aug – Sept 2025", d: "Pharmacy platform UIs inspired by Apollo Pharmacy and 1MG, with booking dashboards and prototypes built to WCAG standards.", t: ["Figma", "WCAG", "Dashboards", "Wireframes"], c: "#ffd84a", nc: "#cbb8ff", bg: "#f7d0e9", tag: "Pharmacy UI", url: "Remote" },
+  { n: "Verdure", type: "Mobile App", role: "UI/UX Designer", st: "Case study", d: "A plant-care app with reminders, dashboards and clean care flows that keep a watering routine easy to follow.", t: ["Figma", "Mobile UI", "Prototyping", "Dashboards"], c: "#cbb8ff", nc: "#ff6a2b", bg: "#c8f55a", tag: "Plant Care App", url: "behance.net", image: "/projects/verdure.png" },
+  { n: "THREADRIP", type: "Shopping App", role: "UI/UX Designer", st: "Case study", d: "A Gen Z fashion shopping app with a bold, browse-first interface.", t: ["Figma", "E-commerce", "Mobile UI", "Visual design"], c: "#fff4dc", nc: "#c8f55a", bg: "#ff6a2b", tag: "GenZ Fashion", url: "behance.net", image: "/projects/THREADRIP.png" },
+  { n: "Medighar", type: "Healthcare Platform", role: "Product Designer", st: "Aug – Sept 2025", d: "Pharmacy platform UIs inspired by Apollo Pharmacy and 1MG, with booking dashboards and prototypes built to WCAG standards.", t: ["Figma", "WCAG", "Dashboards", "Wireframes"], c: "#ffd84a", nc: "#cbb8ff", bg: "#f7d0e9", tag: "Pharmacy UI", url: "Remote", image: "/projects/medighar.png" },
   { n: "Threesixty Space", type: "Startup Websites", role: "Freelance UI/UX Designer", st: "May – Oct 2025", d: "Design and UX strategy for 5+ startup sites, including onboarding flows, landing pages and CTAs. Engagement rose 35% and conversions 20%.", t: ["Landing pages", "Onboarding", "UX strategy", "CTAs"], c: "#f7d0e9", nc: "#ffd84a", bg: "#cbb8ff", tag: "Startup Sites", url: "Freelance" },
-  { n: "Sakkhi Swart", type: "Responsive Website", role: "Designer & Developer", st: "In progress", d: "A personal project: a responsive site built with modern UI patterns, designed in Figma and coded in the browser.", t: ["Figma", "HTML", "CSS", "JavaScript"], c: "#c8f55a", nc: "#cbb8ff", bg: "#ffd84a", tag: "Personal Project", url: "Work in progress" },
+  { n: "Sakkhi Swart", type: "Responsive Website", role: "Designer & Developer", st: "In progress", d: "A personal project: a responsive site built with modern UI patterns, designed in Figma and coded in the browser.", t: ["Figma", "HTML", "CSS", "JavaScript"], c: "#c8f55a", nc: "#cbb8ff", bg: "#ffd84a", tag: "Personal Project", url: "Work in progress", image: "/projects/sakkhi.jpeg" },
 ];
 
 export const TAG_COLORS = ["#c8f55a", "#cbb8ff", "#ffd84a", "#ff6a2b", "#fff4dc"];

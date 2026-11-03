@@ -10,8 +10,12 @@ function ProjectDetails({ index }: { index: number }) {
     <div className="inner">
       <div className="frame">
         <div className="bar"><i></i><i></i><i></i><span>{project.url}</span></div>
-        <div className="canvas">
-          <div><b>{project.n}</b><small>{project.tag}</small></div>
+        <div className={`canvas${project.image ? " has-image" : ""}`}>
+          {project.image ? (
+            <img src={project.image} alt={`${project.n} project preview`} />
+          ) : (
+            <div><b>{project.n}</b><small>{project.tag}</small></div>
+          )}
         </div>
         <div className="badge" style={{ background: index === 4 ? "#ff6a2b" : "#ff3d3d" }}>
           {index === 4 ? "Building" : index < 2 ? "Case study" : "Shipped"}
